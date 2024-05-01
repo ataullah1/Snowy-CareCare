@@ -213,40 +213,6 @@ const Nav = () => {
                 </button>
               </div>
             )}
-            {/* <dialog
-              id="my_modal_1"
-              className="hidden sm:flex items-center justify-center modal"
-            >
-              <div
-                className="modal-box relative w-[700px]"
-                style={{
-                  backgroundImage: `url(${img1})`,
-                  backgroundPosition: 'center',
-                  backgroundSize: 'cover',
-                  backgroundRepeat: 'no-repeat',
-                  boxShadow: '0px 0px 26px 5px #fff',
-                }}
-              >
-                <form method="dialog">
-                  <button className="btn btn-sm btn-circle btn-ghost h-10 w-10 absolute right-2 top-2 text-2xl bg-slate-500 text-white hover:bg-slate-800">
-                    <CgClose />
-                  </button>
-                </form>
-                <div className="flex gap-4 justify-center items-center min-h-72">
-                  <Link to={'/login'}>
-                    <button className="text-lg font-bold py-2 border-2 bg-secondColor text-white border-secondColor hover:scale-110 duration-200 px-3 rounded-md w-40  hover:text-white">
-                      Log In
-                    </button>
-                  </Link>
-
-                  <Link to={'/register'}>
-                    <button className="text-lg font-bold py-2 border-2 bg-firstColor hover:scale-110 duration-200 shadow-lg border-firstColor hover:bg-firstColor px-3 rounded-md w-40 text-white">
-                      Create Account
-                    </button>
-                  </Link>
-                </div>
-              </div>
-            </dialog> */}
           </div>
         </div>
       </div>
