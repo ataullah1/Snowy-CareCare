@@ -3,7 +3,6 @@ import logo from '../../assets/logo.svg';
 import { IoIosArrowForward } from 'react-icons/io';
 import { IoClose } from 'react-icons/io5';
 import { MdMenu } from 'react-icons/md';
-import { Tooltip } from 'react-tooltip';
 import { useState } from 'react';
 
 const Nav = () => {
@@ -12,9 +11,8 @@ const Nav = () => {
   // console.log(hover);
   return (
     <div className="">
-      <Tooltip id="my-tooltip" />
-      <div className="w-11/12 mx-auto max-w-[1700px]">
-        <div className=" navbar flex items-end flex-col md:flex-row md:justify-between">
+      <div className="w-11/12 mx-auto max-w-[1700px] mt-4">
+        <div className=" navbar flex items-center flex-col md:flex-row md:justify-between">
           <div className="navbar-start flex items-center flex-row-reverse justify-between w-full md:w-auto md:flex-row">
             <div className="flex gap-4 items-center">
               <div className="relative dropdown">
@@ -85,7 +83,7 @@ const Nav = () => {
               to={'/'}
               className="text-3xl font-extrabold bg-white px-2 rounded-full"
             >
-              <img className="h-12 lg:h-[55px]" src={logo} alt="" />
+              <img className="h-10 md:h-12" src={logo} alt="" />
             </Link>
           </div>
           {/* Learge screen Menu  */}
