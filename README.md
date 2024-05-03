@@ -1,3 +1,0 @@
-# Snowy CareCare
-
-## Live Link:
