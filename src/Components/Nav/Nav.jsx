@@ -11,7 +11,7 @@ const Nav = () => {
   // console.log(hover);
   return (
     <div className="">
-      <div className="my-4">
+      <div className="my-1 sm:my-2 md:my-3 lg:my-4">
         <div className=" navbar flex items-center flex-col md:flex-row md:justify-between">
           <div className="navbar-start flex items-center flex-row-reverse justify-between w-full md:w-auto md:flex-row">
             <div className="flex gap-4 items-center">

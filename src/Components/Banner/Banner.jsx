@@ -148,7 +148,25 @@ const Banner = () => {
           </div>
         </div>
       </div>
-      <div className="z-20 bg-gradient-to-r from-[#151515] to-[#15151500] rounded-xl absolute top-0 left-0 right-0 bottom-0 w-full h-full"></div>
+      <div className="z-20 bg-gradient-to-r from-[#151515] to-[#15151500] rounded-xl absolute top-0 left-0 right-0 bottom-0 w-full h-full flex items-center justify-start px-8 sm:px-16 lg:px-24">
+        <div>
+          <h1 className="max-w-[420px] lg:max-w-[463px] text-white text-3xl sm:text-5xl lg:text-6xl font-bold leading-[40px] sm:leading-[60px] lg:leading-[75px]">
+            Affordable Price For Car Servicing
+          </h1>
+          <p className="max-w-[522px] text-white lg:text-lg font-normal  capitalize lg:leading-[30px] py-2 sm:py-4 lg:py-7">
+            There are many variations of passages of available, but the majority
+            have suffered alteration in some form
+          </p>
+          <div className="flex gap-4 items-center">
+            <button className="px-3 sm:px-5 border border-primeryColor bg-primeryColor py-2 text-white rounded-md text-sm sm:text-base font-semibold">
+              Discover More
+            </button>
+            <button className="px-3 sm:px-5 border border-white bg-transparent py-2 text-white rounded-md text-sm sm:text-base font-semibold">
+              Latest Project
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
