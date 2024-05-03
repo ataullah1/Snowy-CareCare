@@ -44,7 +44,10 @@ const Services = ({ dta }) => {
         ))}
       </div>
       <div className="pt-11 text-center">
-        <button className="px-5 py-2 border border-primeryColor text-primeryColor bg-transparent hover:bg-primeryColor hover:text-white hover:scale-110 active:scale-95 duration-200 font-semibold rounded-md" onClick={()=>setShow(dta.length)}>
+        <button
+          className="px-5 py-2 border border-primeryColor text-primeryColor bg-transparent hover:bg-primeryColor hover:text-white hover:scale-110 active:scale-95 duration-200 font-semibold rounded-md"
+          onClick={() => setShow(dta.length)}
+        >
           More Services
         </button>
       </div>
