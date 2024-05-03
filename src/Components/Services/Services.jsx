@@ -4,7 +4,7 @@ import { IoIosArrowRoundForward } from 'react-icons/io';
 const Services = () => {
   return (
     <div>
-      <div className="text-center">
+      <div className="text-center pb-8">
         <h3 className="text-orange-600 text-xl font-bold">Service</h3>
         <h1 className="max-w-[376px] mx-auto text-neutral-900 text-[45px] font-bold">
           Our Service Area
@@ -17,7 +17,7 @@ const Services = () => {
       {/* Card Part  */}
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-        <div className="w-full max-w-[364px] p-3 lg:p-5 hover:scale-105 duration-200 bg-white rounded-xl border border-gray-200 space-y-3">
+        <div className="w-full max-w-[450px] p-3 lg:p-5 hover:scale-105 duration-200 bg-white rounded-xl border border-gray-200 space-y-3 mx-auto">
           <div
             className="w-full h-52 rounded-xl bg-cover bg-no-repeat"
             style={{
@@ -35,7 +35,7 @@ const Services = () => {
             </span>
           </div>
         </div>
-        <div className="w-full max-w-[364px] p-3 lg:p-5 hover:scale-105 duration-200 bg-white rounded-xl border border-gray-200 space-y-3">
+        <div className="w-full max-w-[450px] p-3 lg:p-5 hover:scale-105 duration-200 bg-white rounded-xl border border-gray-200 space-y-3 mx-auto">
           <div
             className="w-full h-52 rounded-xl bg-cover bg-no-repeat"
             style={{
@@ -53,7 +53,7 @@ const Services = () => {
             </span>
           </div>
         </div>
-        <div className="w-full max-w-[364px] p-3 lg:p-5 hover:scale-105 duration-200 bg-white rounded-xl border border-gray-200 space-y-3">
+        <div className="w-full max-w-[450px] p-3 lg:p-5 hover:scale-105 duration-200 bg-white rounded-xl border border-gray-200 space-y-3 mx-auto">
           <div
             className="w-full h-52 rounded-xl bg-cover bg-no-repeat"
             style={{
@@ -71,7 +71,25 @@ const Services = () => {
             </span>
           </div>
         </div>
-        <div className="w-full max-w-[364px] p-3 lg:p-5 hover:scale-105 duration-200 bg-white rounded-xl border border-gray-200 space-y-3">
+        <div className="w-full max-w-[450px] p-3 lg:p-5 hover:scale-105 duration-200 bg-white rounded-xl border border-gray-200 space-y-3 mx-auto">
+          <div
+            className="w-full h-52 rounded-xl bg-cover bg-no-repeat"
+            style={{
+              backgroundImage: `url(${moduleName})`,
+              backgroundPosition: 'center',
+            }}
+          ></div>
+          <div className="text-neutral-700 text-[25px] font-bold ">
+            Electrical System
+          </div>
+          <div className="text-orange-600 text-xl font-semibold flex justify-between items-center">
+            Price : $20.00
+            <span className="text-3xl hover:scale-110 hover:translate-x-1 duration-200 cursor-pointer">
+              <IoIosArrowRoundForward />
+            </span>
+          </div>
+        </div>
+        <div className="w-full max-w-[450px] p-3 lg:p-5 hover:scale-105 duration-200 bg-white rounded-xl border border-gray-200 space-y-3 mx-auto">
           <div
             className="w-full h-52 rounded-xl bg-cover bg-no-repeat"
             style={{

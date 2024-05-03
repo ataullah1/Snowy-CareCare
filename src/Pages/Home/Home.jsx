@@ -1,5 +1,7 @@
 import AboutUs from '../../Components/AboutUs/AboutUs';
 import Banner from '../../Components/Banner/Banner';
+import BlackSec from '../../Components/BlackSec/BlackSec';
+import PopulerProducts from '../../Components/PopulerProducts/PopulerProducts';
 import Services from '../../Components/Services/Services';
 
 const Home = () => {
@@ -10,6 +12,8 @@ const Home = () => {
         <AboutUs />
       </div>
       <Services />
+      <BlackSec />
+      <PopulerProducts />
     </div>
   );
 };
