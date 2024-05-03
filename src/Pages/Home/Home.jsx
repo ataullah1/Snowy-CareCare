@@ -1,9 +1,11 @@
 import AboutUs from '../../Components/AboutUs/AboutUs';
 import Banner from '../../Components/Banner/Banner';
 import BlackSec from '../../Components/BlackSec/BlackSec';
+import CoreFuture from '../../Components/CoreFuture/CoreFuture';
 import Team from '../../Components/OurTeam/Team';
 import PopulerProducts from '../../Components/PopulerProducts/PopulerProducts';
 import Services from '../../Components/Services/Services';
+import Testimonial from '../../Components/Testimonial/Testimonial';
 
 const Home = () => {
   return (
@@ -16,6 +18,10 @@ const Home = () => {
       <BlackSec />
       <PopulerProducts />
       <Team />
+      <CoreFuture />
+      <div className="my-28">
+        <Testimonial />
+      </div>
     </div>
   );
 };
