@@ -4,9 +4,11 @@ import Footer from '../Components/Footer/Footer';
 
 const Root = () => {
   return (
-    <div className="w-11/12 lg:w-10/12 mx-auto max-w-[1700px]">
-      <Nav />
-      <Outlet />
+    <div>
+      <div className="w-11/12 lg:w-10/12 mx-auto max-w-[1700px]">
+        <Nav />
+        <Outlet />
+      </div>
       <Footer />
     </div>
   );
