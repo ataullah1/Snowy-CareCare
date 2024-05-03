@@ -1,7 +1,9 @@
-import moduleName from '../../assets/images/services/1.jpg';
+import PropTypes from 'prop-types';
+import { useState } from 'react';
 import { IoIosArrowRoundForward } from 'react-icons/io';
 
 const Services = ({ dta }) => {
+  const [show, setShow] = useState(6);
   return (
     <div>
       <div className="text-center pb-8">
@@ -17,7 +19,7 @@ const Services = ({ dta }) => {
       {/* Card Part  */}
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-        {dta.map((data) => (
+        {dta.slice(0, show).map((data) => (
           <div
             key={data._id}
             className="w-full max-w-[450px] p-3 lg:p-5 hover:scale-105 duration-200 bg-white rounded-xl border border-gray-200 space-y-3 mx-auto"
@@ -42,7 +44,7 @@ const Services = ({ dta }) => {
         ))}
       </div>
       <div className="pt-11 text-center">
-        <button className="px-5 py-2 border border-primeryColor text-primeryColor bg-transparent hover:bg-primeryColor hover:text-white hover:scale-110 active:scale-95 duration-200 font-semibold rounded-md">
+        <button className="px-5 py-2 border border-primeryColor text-primeryColor bg-transparent hover:bg-primeryColor hover:text-white hover:scale-110 active:scale-95 duration-200 font-semibold rounded-md" onClick={()=>setShow(dta.length)}>
           More Services
         </button>
       </div>
@@ -51,3 +53,6 @@ const Services = ({ dta }) => {
 };
 
 export default Services;
+Services.propTypes = {
+  dta: PropTypes.array,
+};
