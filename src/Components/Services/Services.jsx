@@ -1,0 +1,102 @@
+import moduleName from '../../assets/images/services/1.jpg';
+import { IoIosArrowRoundForward } from 'react-icons/io';
+
+const Services = () => {
+  return (
+    <div>
+      <div className="text-center">
+        <h3 className="text-orange-600 text-xl font-bold">Service</h3>
+        <h1 className="max-w-[376px] mx-auto text-neutral-900 text-[45px] font-bold">
+          Our Service Area
+        </h1>
+        <p className="max-w-[717px] mx-auto text-center text-neutral-500 text-base font-normal capitalize leading-[30px]">
+          {` the majority have suffered alteration in some form, by injected
+          humour, or randomised words which don't look even slightly believable.`}
+        </p>
+      </div>
+      {/* Card Part  */}
+
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="w-full max-w-[364px] p-3 lg:p-5 hover:scale-105 duration-200 bg-white rounded-xl border border-gray-200 space-y-3">
+          <div
+            className="w-full h-52 rounded-xl bg-cover bg-no-repeat"
+            style={{
+              backgroundImage: `url(${moduleName})`,
+              backgroundPosition: 'center',
+            }}
+          ></div>
+          <div className="text-neutral-700 text-[25px] font-bold ">
+            Electrical System
+          </div>
+          <div className="text-orange-600 text-xl font-semibold flex justify-between items-center">
+            Price : $20.00
+            <span className="text-3xl hover:scale-110 hover:translate-x-1 duration-200 cursor-pointer">
+              <IoIosArrowRoundForward />
+            </span>
+          </div>
+        </div>
+        <div className="w-full max-w-[364px] p-3 lg:p-5 hover:scale-105 duration-200 bg-white rounded-xl border border-gray-200 space-y-3">
+          <div
+            className="w-full h-52 rounded-xl bg-cover bg-no-repeat"
+            style={{
+              backgroundImage: `url(${moduleName})`,
+              backgroundPosition: 'center',
+            }}
+          ></div>
+          <div className="text-neutral-700 text-[25px] font-bold ">
+            Electrical System
+          </div>
+          <div className="text-orange-600 text-xl font-semibold flex justify-between items-center">
+            Price : $20.00
+            <span className="text-3xl hover:scale-110 hover:translate-x-1 duration-200 cursor-pointer">
+              <IoIosArrowRoundForward />
+            </span>
+          </div>
+        </div>
+        <div className="w-full max-w-[364px] p-3 lg:p-5 hover:scale-105 duration-200 bg-white rounded-xl border border-gray-200 space-y-3">
+          <div
+            className="w-full h-52 rounded-xl bg-cover bg-no-repeat"
+            style={{
+              backgroundImage: `url(${moduleName})`,
+              backgroundPosition: 'center',
+            }}
+          ></div>
+          <div className="text-neutral-700 text-[25px] font-bold ">
+            Electrical System
+          </div>
+          <div className="text-orange-600 text-xl font-semibold flex justify-between items-center">
+            Price : $20.00
+            <span className="text-3xl hover:scale-110 hover:translate-x-1 duration-200 cursor-pointer">
+              <IoIosArrowRoundForward />
+            </span>
+          </div>
+        </div>
+        <div className="w-full max-w-[364px] p-3 lg:p-5 hover:scale-105 duration-200 bg-white rounded-xl border border-gray-200 space-y-3">
+          <div
+            className="w-full h-52 rounded-xl bg-cover bg-no-repeat"
+            style={{
+              backgroundImage: `url(${moduleName})`,
+              backgroundPosition: 'center',
+            }}
+          ></div>
+          <div className="text-neutral-700 text-[25px] font-bold ">
+            Electrical System
+          </div>
+          <div className="text-orange-600 text-xl font-semibold flex justify-between items-center">
+            Price : $20.00
+            <span className="text-3xl hover:scale-110 hover:translate-x-1 duration-200 cursor-pointer">
+              <IoIosArrowRoundForward />
+            </span>
+          </div>
+        </div>
+      </div>
+      <div className="pt-11 text-center">
+        <button className="px-5 py-2 border border-primeryColor text-primeryColor bg-transparent hover:bg-primeryColor hover:text-white hover:scale-110 active:scale-95 duration-200 font-semibold rounded-md">
+          More Services
+        </button>
+      </div>
+    </div>
+  );
+};
+
+export default Services;
