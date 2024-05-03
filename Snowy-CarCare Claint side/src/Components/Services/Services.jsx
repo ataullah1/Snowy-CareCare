@@ -1,7 +1,7 @@
 import moduleName from '../../assets/images/services/1.jpg';
 import { IoIosArrowRoundForward } from 'react-icons/io';
 
-const Services = () => {
+const Services = ({ dta }) => {
   return (
     <div>
       <div className="text-center pb-8">
@@ -17,96 +17,29 @@ const Services = () => {
       {/* Card Part  */}
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-        <div className="w-full max-w-[450px] p-3 lg:p-5 hover:scale-105 duration-200 bg-white rounded-xl border border-gray-200 space-y-3 mx-auto">
+        {dta.map((data) => (
           <div
-            className="w-full h-52 rounded-xl bg-cover bg-no-repeat"
-            style={{
-              backgroundImage: `url(${moduleName})`,
-              backgroundPosition: 'center',
-            }}
-          ></div>
-          <div className="text-neutral-700 text-[25px] font-bold ">
-            Electrical System
+            key={data._id}
+            className="w-full max-w-[450px] p-3 lg:p-5 hover:scale-105 duration-200 bg-white rounded-xl border border-gray-200 space-y-3 mx-auto"
+          >
+            <div
+              className="w-full h-52 rounded-xl bg-cover bg-no-repeat"
+              style={{
+                backgroundImage: `url(${data.img})`,
+                backgroundPosition: 'center',
+              }}
+            ></div>
+            <div className="text-neutral-700 text-[25px] font-bold ">
+              {data.title}
+            </div>
+            <div className="text-orange-600 text-xl font-semibold flex justify-between items-center">
+              Price : ${data.price}
+              <span className="text-3xl hover:scale-110 hover:translate-x-1 duration-200 cursor-pointer">
+                <IoIosArrowRoundForward />
+              </span>
+            </div>
           </div>
-          <div className="text-orange-600 text-xl font-semibold flex justify-between items-center">
-            Price : $20.00
-            <span className="text-3xl hover:scale-110 hover:translate-x-1 duration-200 cursor-pointer">
-              <IoIosArrowRoundForward />
-            </span>
-          </div>
-        </div>
-        <div className="w-full max-w-[450px] p-3 lg:p-5 hover:scale-105 duration-200 bg-white rounded-xl border border-gray-200 space-y-3 mx-auto">
-          <div
-            className="w-full h-52 rounded-xl bg-cover bg-no-repeat"
-            style={{
-              backgroundImage: `url(${moduleName})`,
-              backgroundPosition: 'center',
-            }}
-          ></div>
-          <div className="text-neutral-700 text-[25px] font-bold ">
-            Electrical System
-          </div>
-          <div className="text-orange-600 text-xl font-semibold flex justify-between items-center">
-            Price : $20.00
-            <span className="text-3xl hover:scale-110 hover:translate-x-1 duration-200 cursor-pointer">
-              <IoIosArrowRoundForward />
-            </span>
-          </div>
-        </div>
-        <div className="w-full max-w-[450px] p-3 lg:p-5 hover:scale-105 duration-200 bg-white rounded-xl border border-gray-200 space-y-3 mx-auto">
-          <div
-            className="w-full h-52 rounded-xl bg-cover bg-no-repeat"
-            style={{
-              backgroundImage: `url(${moduleName})`,
-              backgroundPosition: 'center',
-            }}
-          ></div>
-          <div className="text-neutral-700 text-[25px] font-bold ">
-            Electrical System
-          </div>
-          <div className="text-orange-600 text-xl font-semibold flex justify-between items-center">
-            Price : $20.00
-            <span className="text-3xl hover:scale-110 hover:translate-x-1 duration-200 cursor-pointer">
-              <IoIosArrowRoundForward />
-            </span>
-          </div>
-        </div>
-        <div className="w-full max-w-[450px] p-3 lg:p-5 hover:scale-105 duration-200 bg-white rounded-xl border border-gray-200 space-y-3 mx-auto">
-          <div
-            className="w-full h-52 rounded-xl bg-cover bg-no-repeat"
-            style={{
-              backgroundImage: `url(${moduleName})`,
-              backgroundPosition: 'center',
-            }}
-          ></div>
-          <div className="text-neutral-700 text-[25px] font-bold ">
-            Electrical System
-          </div>
-          <div className="text-orange-600 text-xl font-semibold flex justify-between items-center">
-            Price : $20.00
-            <span className="text-3xl hover:scale-110 hover:translate-x-1 duration-200 cursor-pointer">
-              <IoIosArrowRoundForward />
-            </span>
-          </div>
-        </div>
-        <div className="w-full max-w-[450px] p-3 lg:p-5 hover:scale-105 duration-200 bg-white rounded-xl border border-gray-200 space-y-3 mx-auto">
-          <div
-            className="w-full h-52 rounded-xl bg-cover bg-no-repeat"
-            style={{
-              backgroundImage: `url(${moduleName})`,
-              backgroundPosition: 'center',
-            }}
-          ></div>
-          <div className="text-neutral-700 text-[25px] font-bold ">
-            Electrical System
-          </div>
-          <div className="text-orange-600 text-xl font-semibold flex justify-between items-center">
-            Price : $20.00
-            <span className="text-3xl hover:scale-110 hover:translate-x-1 duration-200 cursor-pointer">
-              <IoIosArrowRoundForward />
-            </span>
-          </div>
-        </div>
+        ))}
       </div>
       <div className="pt-11 text-center">
         <button className="px-5 py-2 border border-primeryColor text-primeryColor bg-transparent hover:bg-primeryColor hover:text-white hover:scale-110 active:scale-95 duration-200 font-semibold rounded-md">
