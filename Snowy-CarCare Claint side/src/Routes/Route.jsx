@@ -10,7 +10,11 @@ const Route = createBrowserRouter([
     element: <Root />,
     errorElement: <Error />,
     children: [
-      { path: '/', element: <Home /> },
+      {
+        path: '/',
+        element: <Home />,
+        loader: () => fetch('http://localhost:3000/car-services'),
+      },
       { path: '/about', element: <About /> },
     ],
   },
