@@ -30,10 +30,23 @@ async function run() {
       .db('Snowy_CareCare')
       .collection('services');
 
-    // Read all data
+    // Load all data
     app.get('/car-services', async (req, res) => {
       const result = await carCareCollection.find().toArray();
       res.send(result);
+    });
+    // Load SIngle data for server
+    app.get('/car-services/:id', async (req, res) => {
+      const id = req.params.id;
+      // console.log(id);
+      const query = { _id: new ObjectId(id) };
+      const result = await carCareCollection.findOne(query);
+      res.send(result);
+    });
+    // Load SIngle data for Checkout
+    app.get('/checkout/:id', async (req, res) => {
+      const id = req.params.id;
+      const query = { _id: new ObjectId(id) };
     });
 
     await client.db('admin').command({ ping: 1 });
