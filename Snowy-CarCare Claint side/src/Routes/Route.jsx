@@ -50,7 +50,14 @@ const Route = createBrowserRouter([
         loader: () => fetch('http://localhost:3000/car-services'),
       },
       { path: '/manage-order', element: <About /> },
-      { path: '/my-order', element: <MyOrder /> },
+      {
+        path: '/my-order',
+        element: (
+          <PrivetRoute>
+            <MyOrder />
+          </PrivetRoute>
+        ),
+      },
       { path: '/about', element: <About /> },
     ],
   },

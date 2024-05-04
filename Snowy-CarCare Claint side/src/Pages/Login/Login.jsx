@@ -7,6 +7,7 @@ import { ContextAuth } from '../../Provider/Provider';
 import Swal from 'sweetalert2';
 import { RiLockPasswordFill } from 'react-icons/ri';
 import { MdEmail } from 'react-icons/md';
+import axios from 'axios';
 const Login = () => {
   const { userDta, googleLogin, emlPassLogin, setLoading } =
     useContext(ContextAuth);
@@ -23,7 +24,7 @@ const Login = () => {
     const formDta = new FormData(e.currentTarget);
     const email = formDta.get('email');
     const pass = formDta.get('password');
-    console.log(email, pass);
+    // console.log(email, pass);
 
     if (!isValidEmail.test(email)) {
       setEmailErr('Please enter a valid email address.');
@@ -44,14 +45,23 @@ const Login = () => {
     }
     emlPassLogin(email, pass)
       .then((userCredential) => {
-        const user = userCredential.user;
-        console.log(user);
+        const userData = userCredential.user;
+        console.log(userData);
+        const user = { email };
+        axios
+          .post('http://localhost:3000/jwt', user, { withCredentials: true })
+          .then((res) => {
+            console.log(res.data);
+            if (res.data.success) {
+              naviget(location?.state ? location.state : '/');
+            }
+          });
+
         Swal.fire({
           title: 'Good job!',
           text: 'Your account has been successfully logged in.',
           icon: 'success',
         });
-        naviget(location?.state ? location.state : '/');
       })
       .catch((error) => {
         const errorMessage = error.message;

@@ -1,5 +1,4 @@
 import { CgClose } from 'react-icons/cg';
-import { Link } from 'react-router-dom';
 import BannerComp from '../../Components/BannerComp/BannerComp';
 import bannImg from '../../assets/images/banner/5.jpg';
 import { useContext, useEffect, useState } from 'react';
@@ -11,9 +10,11 @@ import { TiDelete } from 'react-icons/ti';
 const MyOrder = () => {
   const { userDta } = useContext(ContextAuth);
   const [data, setData] = useState([]);
+
+  const url = `http://localhost:3000/my-order?email=${userDta?.email}`;
   useEffect(() => {
     axios
-      .get(`http://localhost:3000/my-order?email=${userDta.email}`)
+      .get(url, { withCredentials: true })
       .then((response) => {
         // Code for handling the response
         setData(response.data);
@@ -26,7 +27,7 @@ const MyOrder = () => {
           icon: 'error',
         });
       });
-  }, [userDta.email]);
+  }, [url]);
 
   const [imgFullScreen, setImgFullScreen] = useState();
   const imageFullScreen = (img) => {
@@ -61,7 +62,7 @@ const MyOrder = () => {
       <div className="my-16 overflow-x-auto">
         <table className="min-w-[930px] w-full">
           <tbody>
-            {data.map((dta, i) => (
+            {data.map((dta) => (
               <tr key={dta._id} className="text-xl ">
                 <td className=" text-center font-bold bannerFont text-5xl">
                   <button className="hover:text-primeryColor">
