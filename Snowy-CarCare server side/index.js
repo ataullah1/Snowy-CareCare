@@ -1,13 +1,21 @@
 const express = require('express');
 const cors = require('cors');
+const jwt = require('jsonwebtoken');
+const cookieParser = require('cookie-parser');
 const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb');
 require('dotenv').config();
 const app = express();
 const port = process.env.PORT || 3000;
 
 // Middleware============
-app.use(cors());
+app.use(
+  cors({
+    origin: ['http://localhost:5173'],
+    credentials: true,
+  })
+);
 app.use(express.json());
+app.use(cookieParser());
 
 const uri = `mongodb+srv://${process.env.USER}:${process.env.PASS}@cluster0.htex290.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`;
 
@@ -22,20 +30,35 @@ const client = new MongoClient(uri, {
 
 async function run() {
   try {
-    // Connect the client to the server	(optional starting in v4.7)
     // await client.connect();
-    // Send a ping to confirm a successful connection
-
     const carCareCollection = client
       .db('Snowy_CareCare')
       .collection('services');
+    const carCareOrderCollection = client
+      .db('Snowy_CareCare')
+      .collection('order');
 
-    // Load all data
+    // Auth Related api
+    app.post('/jwt', async (req, res) => {
+      const user = req.body;
+      console.log(user);
+      const token = jwt.sign(user, process.env.TOKEN_SECRET, {
+        expiresIn: '1h',
+      });
+      res
+        .cookie('cookie', token, {
+          httpOnly: true,
+          secure: false,
+        })
+        .send({ success: true });
+    });
+
+    // Load all data  read
     app.get('/car-services', async (req, res) => {
       const result = await carCareCollection.find().toArray();
       res.send(result);
     });
-    // Load SIngle data for server
+    // Load SIngle data read for server
     app.get('/car-services/:id', async (req, res) => {
       const id = req.params.id;
       // console.log(id);
@@ -43,10 +66,26 @@ async function run() {
       const result = await carCareCollection.findOne(query);
       res.send(result);
     });
-    // Load SIngle data for Checkout
-    app.get('/checkout/:id', async (req, res) => {
-      const id = req.params.id;
-      const query = { _id: new ObjectId(id) };
+
+    // Post check out data
+
+    app.post('/order', async (req, res) => {
+      const data = req.body;
+      console.log(data);
+      const result = await carCareOrderCollection.insertOne(data);
+      res.send(result);
+    });
+
+    // Load SIngle data read for Checkout
+    app.get('/my-order', async (req, res) => {
+      let query = {};
+      if (req.query?.email) {
+        query = { email: req.query.email };
+      }
+      console.log('Token Colllll', req.cookies.cookie);
+
+      const result = await carCareOrderCollection.find(query).toArray();
+      res.send(result);
     });
 
     await client.db('admin').command({ ping: 1 });
