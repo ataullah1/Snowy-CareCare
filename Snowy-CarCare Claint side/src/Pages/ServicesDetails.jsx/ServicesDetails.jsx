@@ -1,6 +1,9 @@
 import { useLoaderData } from 'react-router-dom';
 import BannerComp from '../../Components/BannerComp/BannerComp';
 import imgVi from '../../assets/images/ohters/imgVideo.png';
+import pages from '../../assets/images/ohters/pages.svg';
+import logo from '../../assets/logoFooter.svg';
+import { FaArrowRight } from 'react-icons/fa';
 
 const ServicesDetails = () => {
   const dta = useLoaderData();
@@ -123,7 +126,120 @@ const ServicesDetails = () => {
           </div>
           <img className="max-w-[752px] w-full rounded-xl" src={imgVi} />
         </div>
-        <div className="w-1/3"></div>
+        <div className="w-1/3 space-y-8">
+          <div className="w-ful bg-zinc-100 rounded-xl p-8">
+            <div className="text-neutral-900 text-[25px] font-bold font-['Inter']">
+              Services
+            </div>
+            <div className="flex flex-col gap-4">
+              <div className="w-full py-3 flex items-center justify-between px-3 bg-white hover:bg-primeryColor rounded-md text-slate-900 hover:text-white">
+                <div className=" text-base font-semibold font-['Inter']">
+                  Full Car Repair
+                </div>
+                <button className="">
+                  <FaArrowRight />
+                </button>
+              </div>
+              <div className="w-full py-3 flex items-center justify-between px-3 bg-white hover:bg-primeryColor rounded-md text-slate-900 hover:text-white">
+                <div className=" text-base font-semibold font-['Inter']">
+                  Engine Repair
+                </div>
+                <button className="">
+                  <FaArrowRight />
+                </button>
+              </div>
+              <div className="w-full py-3 flex items-center justify-between px-3 bg-white hover:bg-primeryColor rounded-md text-slate-900 hover:text-white">
+                <div className=" text-base font-semibold font-['Inter']">
+                  Automatic Services
+                </div>
+                <button className="">
+                  <FaArrowRight />
+                </button>
+              </div>
+              <div className="w-full py-3 flex items-center justify-between px-3 bg-white hover:bg-primeryColor rounded-md text-slate-900 hover:text-white">
+                <div className=" text-base font-semibold font-['Inter']">
+                  Engine Oil Change
+                </div>
+                <button className="">
+                  <FaArrowRight />
+                </button>
+              </div>
+              <div className="w-full py-3 flex items-center justify-between px-3 bg-white hover:bg-primeryColor rounded-md text-slate-900 hover:text-white">
+                <div className=" text-base font-semibold font-['Inter']">
+                  Battery Charge
+                </div>
+                <button className="">
+                  <FaArrowRight />
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div className="w-full space-y-4 bg-neutral-900 rounded-xl p-4">
+            <h2 className="text-white text-[25px] font-bold font-['Inter']">
+              Download
+            </h2>
+
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <img src={pages} alt="" />
+                <div>
+                  <div className="text-white text-lg font-semibold font-['Inter']">
+                    Our Brochure
+                  </div>
+                  <div className="text-neutral-400 text-base font-normal font-['Inter']">
+                    Download
+                  </div>
+                </div>
+              </div>
+              <button className="p-4 text-white bg-orange-600 rounded-[5px]">
+                <FaArrowRight />
+              </button>
+            </div>
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <img src={pages} alt="" />
+                <div>
+                  <div className="text-white text-lg font-semibold font-['Inter']">
+                    Company Details
+                  </div>
+                  <div className="text-neutral-400 text-base font-normal font-['Inter']">
+                    Download
+                  </div>
+                </div>
+              </div>
+              <button className="p-4 text-white bg-orange-600 rounded-[5px]">
+                <FaArrowRight />
+              </button>
+            </div>
+          </div>
+
+          <div className="w-full space-y-4 bg-neutral-900 rounded-xl p-6 text-center pb-10">
+            <img className="mx-auto" src={logo} alt="" />
+            <h2 className="text-center text-white text-xl font-bold font-['Inter'] leading-[35px]">
+              Need Help? We Are Here
+              <br />
+              To Help You
+            </h2>
+            <div className="relative bg-white rounded-xl p-5 pb-8">
+              <div className="text-center text-xl font-bold">
+                <span className="text-orange-600">Car Doctor </span>
+                <span className="text-neutral-900">Special</span>
+              </div>
+              <div className="text-center text-base font-bold">
+                <span className="text-neutral-500">Save up to</span>
+                <span className="text-orange-600">60% off</span>
+              </div>
+              <button className="absolute -bottom-5 left-1/2 -translate-x-1/2 w-40 py-2 bg-orange-600 rounded-md text-white text-lg font-semibold ">
+                Get A Quote
+              </button>
+            </div>
+          </div>
+          <div className="text-neutral-900 text-[35px] font-bold font-['Inter']">
+            Price $250.00
+          </div>
+          <button className="w-full py-2 text-white bg-primeryColor rounded-md font-semibold">Proceed Checkout</button>
+        </div>
       </div>
     </div>
   );
