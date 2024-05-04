@@ -1,4 +1,4 @@
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 import BannerComp from '../../Components/BannerComp/BannerComp';
 import imgVi from '../../assets/images/ohters/imgVideo.png';
 import pages from '../../assets/images/ohters/pages.svg';
@@ -8,7 +8,7 @@ import { PiPlayCircleLight } from 'react-icons/pi';
 
 const ServicesDetails = () => {
   const dta = useLoaderData();
-  const { img } = dta;
+  const { img, _id, title } = dta;
   console.log(dta);
   return (
     <div>
@@ -23,9 +23,7 @@ const ServicesDetails = () => {
               backgroundPosition: 'center',
             }}
           ></div>
-          <h1 className="text-neutral-900 text-[35px] font-bold">
-            Unique Car Engine Service
-          </h1>
+          <h1 className="text-neutral-900 text-[35px] font-bold">{title}</h1>
           <p className=" text-neutral-500 text-base font-normal capitalize leading-[30px]">
             {`            There are many variations of passages of Lorem Ipsum available, but
             the majority have suffered alteration in some form, by injected
@@ -35,7 +33,7 @@ const ServicesDetails = () => {
             middle of text.`}
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-2 gap-4">
-            <div className="max-w-[364px] w-full bg-zinc-100 rounded-xl border-t-2 border-orange-600 p-8 mx-auto">
+            <div className="max-w-[364px] w-full bg-zinc-100 rounded-xl border-t-2 border-primeryColor p-8 mx-auto">
               <h3 className="text-neutral-700 text-xl font-bold">
                 Instant Car Services
               </h3>
@@ -44,7 +42,7 @@ const ServicesDetails = () => {
                 model sentence structures.
               </p>
             </div>
-            <div className="max-w-[364px] w-full bg-zinc-100 rounded-xl border-t-2 border-orange-600 p-8 mx-auto">
+            <div className="max-w-[364px] w-full bg-zinc-100 rounded-xl border-t-2 border-primeryColor p-8 mx-auto">
               <h3 className="text-neutral-700 text-xl font-bold">
                 Instant Car Services
               </h3>
@@ -53,7 +51,7 @@ const ServicesDetails = () => {
                 model sentence structures.
               </p>
             </div>
-            <div className="max-w-[364px] w-full bg-zinc-100 rounded-xl border-t-2 border-orange-600 p-8 mx-auto">
+            <div className="max-w-[364px] w-full bg-zinc-100 rounded-xl border-t-2 border-primeryColor p-8 mx-auto">
               <h3 className="text-neutral-700 text-xl font-bold">
                 Instant Car Services
               </h3>
@@ -62,7 +60,7 @@ const ServicesDetails = () => {
                 model sentence structures.
               </p>
             </div>
-            <div className="max-w-[364px] w-full bg-zinc-100 rounded-xl border-t-2 border-orange-600 p-8 mx-auto">
+            <div className="max-w-[364px] w-full bg-zinc-100 rounded-xl border-t-2 border-primeryColor p-8 mx-auto">
               <h3 className="text-neutral-700 text-xl font-bold">
                 Instant Car Services
               </h3>
@@ -190,7 +188,7 @@ const ServicesDetails = () => {
                   </div>
                 </div>
               </div>
-              <button className="p-4 text-white bg-orange-600 rounded-[5px]">
+              <button className="p-4 text-white bg-primeryColor rounded-[5px]">
                 <FaArrowRight />
               </button>
             </div>
@@ -206,7 +204,7 @@ const ServicesDetails = () => {
                   </div>
                 </div>
               </div>
-              <button className="p-4 text-white bg-orange-600 rounded-[5px]">
+              <button className="p-4 text-white bg-primeryColor rounded-[5px]">
                 <FaArrowRight />
               </button>
             </div>
@@ -221,14 +219,14 @@ const ServicesDetails = () => {
             </h2>
             <div className="relative bg-white rounded-xl p-5 pb-8">
               <div className="text-center text-xl font-bold">
-                <span className="text-orange-600">Car Doctor </span>
+                <span className="text-primeryColor">Car Doctor </span>
                 <span className="text-neutral-900">Special</span>
               </div>
               <div className="text-center text-base font-bold">
                 <span className="text-neutral-500">Save up to</span>
-                <span className="text-orange-600">60% off</span>
+                <span className="text-primeryColor">60% off</span>
               </div>
-              <button className="absolute -bottom-5 left-1/2 -translate-x-1/2 w-40 py-2 bg-orange-600 rounded-md text-white text-lg font-semibold ">
+              <button className="absolute -bottom-5 left-1/2 -translate-x-1/2 w-40 py-2 bg-primeryColor rounded-md text-white text-lg font-semibold ">
                 Get A Quote
               </button>
             </div>
@@ -236,9 +234,11 @@ const ServicesDetails = () => {
           <div className="text-neutral-900 text-[35px] font-bold">
             Price $250.00
           </div>
-          <button className="w-full py-2 text-white bg-primeryColor rounded-md font-semibold">
-            Proceed Checkout
-          </button>
+          <Link to={`/checkout/${_id}`}>
+            <button className="w-full py-2 text-white bg-primeryColor rounded-md font-semibold hover:scale-105 active:scale-95 duration-200">
+              Proceed Checkout
+            </button>
+          </Link>
         </div>
       </div>
     </div>

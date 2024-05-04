@@ -3,12 +3,13 @@ import logo from '../../assets/logo.svg';
 import { IoIosArrowForward } from 'react-icons/io';
 import { IoClose } from 'react-icons/io5';
 import { MdMenu } from 'react-icons/md';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import { ContextAuth } from '../../Provider/Provider';
 
 const Nav = () => {
+  const { userDta, logOutAcc } = useContext(ContextAuth);
   const [view, setView] = useState(false);
-
-  // console.log(hover);
+  // console.log(userDta);
   return (
     <div className="">
       <div className="my-1 sm:my-2 md:my-3 lg:my-4">
@@ -24,7 +25,7 @@ const Nav = () => {
                   {view ? <IoClose /> : <MdMenu />}
                 </div>
                 {view && (
-                  <ul className="navManu absolute mt-1 md:mt-3 -ml-40 md:ml-4 z-10 p-2 shadow rounded-box w-52 border-2 border-solid border-firstColor bg-slate-800 text-white flex flex-col gap-2 md:hidden rounded-xl">
+                  <ul className="navManu absolute mt-1 md:mt-3 -ml-40 md:ml-4 z-50 p-2 shadow w-52 border-2 border-solid border-firstColor bg-slate-800 text-white flex flex-col gap-2 md:hidden rounded-xl">
                     <div
                       onClick={() => setView(!view)}
                       className="md:hidden cursor-pointer text-secondColor hover:text-primeryColor bg-slate-800 text-3xl -translate-x-10 translate-y-1/2 top-[calc(50%-20px)] absolute rounded-l-md border-l-2 border-y-2 border-firstColor"
@@ -126,9 +127,30 @@ const Nav = () => {
             </ul>
           </div>
           <div className="navbar-end flex items-center gap-2 w-40">
-            <button className="hidden md:block font-semibold bg-transparent hover:bg-primeryColor px-3 xl:px-4 rounded-md active:scale-90 duration-150 text-primeryColor border border-primeryColor hover:text-white py-2">
-              Appointment
-            </button>
+            {userDta ? (
+              <div className="flex items-center gap-2">
+                <button className="hidden md:block font-semibold bg-transparent hover:bg-primeryColor px-3 xl:px-4 rounded-md active:scale-90 duration-150 text-primeryColor border border-primeryColor hover:text-white py-2">
+                  Appointment
+                </button>
+                <button
+                  className="hidden md:block font-semibold bg-transparent hover:bg-primeryColor px-3 xl:px-4 rounded-md active:scale-90 duration-150 text-primeryColor border border-primeryColor hover:text-white py-2"
+                  onClick={logOutAcc}
+                >
+                  Logout
+                </button>
+              </div>
+            ) : (
+              <div className="flex items-center gap-2">
+                <button className="hidden md:block font-semibold bg-transparent hover:bg-primeryColor px-3 xl:px-4 rounded-md active:scale-90 duration-150 text-primeryColor border border-primeryColor hover:text-white py-2">
+                  Appointment
+                </button>
+                <Link to={'/login'}>
+                  <button className="hidden md:block font-semibold bg-primeryColor px-3 xl:px-4 rounded-md active:scale-90 duration-150  border border-primeryColor text-white py-2">
+                    Login
+                  </button>
+                </Link>
+              </div>
+            )}
           </div>
         </div>
       </div>
