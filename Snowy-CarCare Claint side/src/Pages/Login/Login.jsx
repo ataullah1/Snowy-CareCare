@@ -1,4 +1,4 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import loginImg from '../../assets/images/login/login.svg';
 import { FcGoogle } from 'react-icons/fc';
 import { FaEye, FaEyeSlash, FaFacebookF, FaLinkedinIn } from 'react-icons/fa';
@@ -10,7 +10,7 @@ import { MdEmail } from 'react-icons/md';
 const Login = () => {
   const { userDta, googleLogin, emlPassLogin, setLoading } =
     useContext(ContextAuth);
-
+  const location = useLocation();
   const naviget = useNavigate();
   const [eye, setEye] = useState(false);
   const isValidEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
