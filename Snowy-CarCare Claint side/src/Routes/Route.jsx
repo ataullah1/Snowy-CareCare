@@ -7,6 +7,7 @@ import ServicesDetails from '../Pages/ServicesDetails.jsx/ServicesDetails';
 import Login from '../Pages/Login/Login';
 import SignUp from '../Pages/Signup/SignUp';
 import PrivetRoute from './PrivetRoute';
+import Checkout from '../Pages/CheckOut/Checkout';
 
 const Route = createBrowserRouter([
   {
@@ -33,7 +34,7 @@ const Route = createBrowserRouter([
         path: '/checkout/:id',
         element: (
           <PrivetRoute>
-            <ServicesDetails />
+            <Checkout />
           </PrivetRoute>
         ),
         loader: ({ params }) =>
