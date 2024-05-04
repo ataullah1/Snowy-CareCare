@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import { useState } from 'react';
 import { IoIosArrowRoundForward } from 'react-icons/io';
+import { Link } from 'react-router-dom';
 
 const Services = ({ dta }) => {
   const [show, setShow] = useState(6);
@@ -36,20 +37,24 @@ const Services = ({ dta }) => {
             </div>
             <div className="text-orange-600 text-xl font-semibold flex justify-between items-center">
               Price : ${data.price}
-              <span className="text-3xl hover:scale-110 hover:translate-x-1 duration-200 cursor-pointer">
-                <IoIosArrowRoundForward />
-              </span>
+              <Link to={`/service/${data.service_id}`}>
+                <span className="text-3xl hover:scale-125 hover:translate-x-1 duration-200 cursor-pointer">
+                  <IoIosArrowRoundForward />
+                </span>
+              </Link>
             </div>
           </div>
         ))}
       </div>
       <div className="pt-11 text-center">
-        <button
-          className="px-5 py-2 border border-primeryColor text-primeryColor bg-transparent hover:bg-primeryColor hover:text-white hover:scale-110 active:scale-95 duration-200 font-semibold rounded-md"
-          onClick={() => setShow(dta.length)}
-        >
-          More Services
-        </button>
+        {dta.length > show && (
+          <button
+            className="px-5 py-2 border border-primeryColor text-primeryColor bg-transparent hover:bg-primeryColor hover:text-white hover:scale-110 active:scale-95 duration-200 font-semibold rounded-md"
+            onClick={() => setShow(dta.length)}
+          >
+            More Services
+          </button>
+        )}
       </div>
     </div>
   );
