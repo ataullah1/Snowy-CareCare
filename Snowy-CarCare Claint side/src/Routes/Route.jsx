@@ -8,6 +8,8 @@ import Login from '../Pages/Login/Login';
 import SignUp from '../Pages/Signup/SignUp';
 import PrivetRoute from './PrivetRoute';
 import Checkout from '../Pages/CheckOut/Checkout';
+import ServicesPage from '../Pages/Services/ServicesPage';
+import MyOrder from '../Pages/MyOrder/MyOrder';
 
 const Route = createBrowserRouter([
   {
@@ -42,6 +44,13 @@ const Route = createBrowserRouter([
       },
       { path: '/login', element: <Login /> },
       { path: '/signup', element: <SignUp /> },
+      {
+        path: '/services',
+        element: <ServicesPage />,
+        loader: () => fetch('http://localhost:3000/car-services'),
+      },
+      { path: '/manage-order', element: <About /> },
+      { path: '/my-order', element: <MyOrder /> },
       { path: '/about', element: <About /> },
     ],
   },

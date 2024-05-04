@@ -5,9 +5,9 @@ const Testimonial = () => {
   return (
     <div>
       <div className="text-center pb-8">
-        <h3 className="text-orange-600 text-xl font-bold">Core Features</h3>
+        <h3 className="text-orange-600 text-xl font-bold">Testimonial</h3>
         <h1 className="text-neutral-900 text-[45px] font-bold">
-          Why Choose Us
+          What Customer Says
         </h1>
         <p className="max-w-[717px] mx-auto text-center text-neutral-500 text-base font-normal capitalize leading-[30px]">
           {`the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.`}

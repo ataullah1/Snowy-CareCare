@@ -37,7 +37,10 @@ const Services = ({ dta }) => {
             </div>
             <div className="text-orange-600 text-xl font-semibold flex justify-between items-center">
               Price : ${data.price}
-              <Link to={`/service-details/${data._id}`} className='hover:scale-125 hover:translate-x-1 duration-200'>
+              <Link
+                to={`/service-details/${data._id}`}
+                className="hover:scale-125 hover:translate-x-1 duration-200"
+              >
                 <span className="text-3xl cursor-pointer">
                   <IoIosArrowRoundForward />
                 </span>

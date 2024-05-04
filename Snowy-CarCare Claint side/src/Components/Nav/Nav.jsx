@@ -98,13 +98,6 @@ const Nav = () => {
               </NavLink>
 
               <NavLink
-                to={'/about'}
-                className="border-b border-transparent hover:border-primeryColor hover:text-primeryColor px-2"
-              >
-                About
-              </NavLink>
-
-              <NavLink
                 to={'/services'}
                 className="border-b border-transparent hover:border-primeryColor hover:text-primeryColor px-2"
               >
@@ -112,17 +105,16 @@ const Nav = () => {
               </NavLink>
 
               <NavLink
-                to={'/blog'}
+                to={'/my-order'}
                 className="border-b border-transparent hover:border-primeryColor hover:text-primeryColor px-2"
               >
-                Blog
+                My Order
               </NavLink>
-
               <NavLink
-                to={'/contact'}
+                to={'/manage-order'}
                 className="border-b border-transparent hover:border-primeryColor hover:text-primeryColor px-2"
               >
-                Contact
+                Manage Order
               </NavLink>
             </ul>
           </div>
