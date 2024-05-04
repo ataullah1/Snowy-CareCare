@@ -13,16 +13,16 @@ const BannerComp = ({ img, nam }) => {
           backgroundPosition: 'center',
         }}
       >
-        <div className="absolute bg-gradient-to-r from-[#151515] to-[#15151500] rounded-xl h-full w-full flex items-center justify-start">
+        <div className="absolute bg-gradient-to-r from-[#151515] to-[#15151500] rounded-xl h-full w-full flex items-center justify-center sm:justify-start">
           <h1 className="px-8 md:px-16 lg:px-24 text-white text-3xl md:text-[45px] font-bold">
             {nam}
           </h1>
         </div>
         <img
-          className="absolute bottom-0 left-1/2 -translate-x-1/2 z-20"
+          className="absolute w-72 bottom-0 left-1/2 -translate-x-1/2 z-20"
           src={linkImg}
         />
-        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 z-30 text-white text-xl font-medium">
+        <div className="absolute bottom-2 left-1/2 -translate-x-1/2 z-30 text-white text-xl font-medium">
           <Link to={'/'}>Home</Link> / <Link>{nam}</Link>
         </div>
       </div>
