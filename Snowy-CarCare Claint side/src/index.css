@@ -13,6 +13,11 @@ h3,
 p {
   font-family: 'Inter', sans-serif;
 }
+.navManu > a.active {
+  border-bottom: 1px solid #ff3811;
+}
+
+/* Loder spinner  */
 .lds-spinner,
 .lds-spinner div,
 .lds-spinner div:after {

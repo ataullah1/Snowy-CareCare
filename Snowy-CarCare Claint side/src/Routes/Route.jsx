@@ -10,6 +10,7 @@ import PrivetRoute from './PrivetRoute';
 import Checkout from '../Pages/CheckOut/Checkout';
 import ServicesPage from '../Pages/Services/ServicesPage';
 import MyOrder from '../Pages/MyOrder/MyOrder';
+import ManageOrder from '../Pages/ManageOrder/ManageOrder';
 
 const Route = createBrowserRouter([
   {
@@ -49,7 +50,7 @@ const Route = createBrowserRouter([
         element: <ServicesPage />,
         loader: () => fetch('http://localhost:3000/car-services'),
       },
-      { path: '/manage-order', element: <About /> },
+      { path: '/manage-order', element: <ManageOrder /> },
       {
         path: '/my-order',
         element: (
