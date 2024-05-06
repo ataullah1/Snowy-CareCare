@@ -17,6 +17,26 @@ app.use(
 app.use(express.json());
 app.use(cookieParser());
 
+const logger = async (req, res, next) => {
+  console.log('Colled', req.host, req.originalUrl);
+  next();
+};
+const verifyToken = async (req, res, next) => {
+  const token = req.cookies?.token;
+  console.log('value in token varify', token);
+  if (!token) {
+    return res.status(401).send({ message: 'Not Authorized' });
+  }
+  jwt.verify(token, process.env.TOKEN_SECRET, (err, decoded) => {
+    if (err) {
+      console.log(err);
+      return res.status(401).send({ message: 'Unauthorize ' });
+    }
+    console.log('Value in the token', decoded);
+    next();
+  });
+};
+
 const uri = `mongodb+srv://${process.env.USER}:${process.env.PASS}@cluster0.htex290.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`;
 
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
@@ -39,14 +59,14 @@ async function run() {
       .collection('order');
 
     // Auth Related api
-    app.post('/jwt', async (req, res) => {
+    app.post('/jwt', logger, async (req, res) => {
       const user = req.body;
       console.log(user);
       const token = jwt.sign(user, process.env.TOKEN_SECRET, {
         expiresIn: '1h',
       });
       res
-        .cookie('cookie', token, {
+        .cookie('token', token, {
           httpOnly: true,
           secure: false,
         })
@@ -54,12 +74,12 @@ async function run() {
     });
 
     // Load all data  read
-    app.get('/car-services', async (req, res) => {
+    app.get('/car-services', logger, async (req, res) => {
       const result = await carCareCollection.find().toArray();
       res.send(result);
     });
     // Load SIngle data read for server
-    app.get('/car-services/:id', async (req, res) => {
+    app.get('/car-services/:id', logger, async (req, res) => {
       const id = req.params.id;
       // console.log(id);
       const query = { _id: new ObjectId(id) };
@@ -69,7 +89,7 @@ async function run() {
 
     // Post check out data
 
-    app.post('/order', async (req, res) => {
+    app.post('/order', logger, async (req, res) => {
       const data = req.body;
       console.log(data);
       const result = await carCareOrderCollection.insertOne(data);
@@ -77,12 +97,16 @@ async function run() {
     });
 
     // Load SIngle data read for Checkout
-    app.get('/my-order', async (req, res) => {
+    app.get('/my-order', logger, verifyToken, async (req, res) => {
+      if (req.query.email !== req.user.email) {
+        return res.status(401).send({ message: 'Unauthorized' });
+      }
+
       let query = {};
       if (req.query?.email) {
         query = { email: req.query.email };
       }
-      console.log('Token Colllll', req.cookies.cookie);
+      // console.log('Token Colllll', req.cookies.cookie);
 
       const result = await carCareOrderCollection.find(query).toArray();
       res.send(result);
