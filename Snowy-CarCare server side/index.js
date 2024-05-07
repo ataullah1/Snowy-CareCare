@@ -7,7 +7,7 @@ require('dotenv').config();
 const app = express();
 const port = process.env.PORT || 3000;
 
-// Middleware============
+// Middlewares============
 app.use(
   cors({
     origin: ['http://localhost:5173'],
@@ -17,23 +17,22 @@ app.use(
 app.use(express.json());
 app.use(cookieParser());
 
-const logger = async (req, res, next) => {
-  console.log('Colled', req.host, req.originalUrl);
+const logger = (req, res, next) => {
+  console.log(req.method, req.url);
   next();
 };
 
-const verifyToken = async (req, res, next) => {
-  const token = req.cookies?.token;
-  console.log('value in token varify', token);
+const verifyToken = (req, res, next) => {
+  const token = req?.cookies?.token;
+  // console.log('token in the middlewate: ', token);
   if (!token) {
-    return res.status(401).send({ message: 'Not Authorized' });
+    return res.status(401).send({ message: 'Unauthorized access' });
   }
   jwt.verify(token, process.env.TOKEN_SECRET, (err, decoded) => {
     if (err) {
-      console.log(err);
-      return res.status(401).send({ message: 'Unauthorize ' });
+      return res.status(401).send({ message: 'Unauthorized access.' });
     }
-    console.log('Value in the token', decoded);
+    req.user = decoded;
     next();
   });
 };
@@ -60,7 +59,7 @@ async function run() {
       .collection('order');
 
     // Auth Related api
-    app.post('/jwt', async (req, res) => {
+    app.post('/jwt', logger, async (req, res) => {
       const user = req.body;
       console.log('user for token', user);
       const token = jwt.sign(user, process.env.TOKEN_SECRET, {
@@ -74,7 +73,7 @@ async function run() {
         })
         .send({ success: true });
     });
-    app.post('/logout', async (req, res) => {
+    app.post('/logout', logger, async (req, res) => {
       const user = req.body;
       console.log('Logging Out user: ', user);
       res.clearCookie('token', { maxAge: 0 }).send({ success: true });
@@ -105,9 +104,10 @@ async function run() {
 
     // Load SIngle data read for Checkout
     app.get('/my-order', logger, verifyToken, async (req, res) => {
-      // if (req.query.email !== req.userDta.email) {
-      //   return res.status(401).send({ message: 'Unauthorized' });
-      // }
+      console.log('Token owner info: ', req.user);
+      if (req.user.email !== req.query.email) {
+        return res.status(403).send({ message: 'Forbidden access' });
+      }
 
       let query = {};
       if (req.query?.email) {
