@@ -65,6 +65,8 @@ const Provider = ({ children }) => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUserDta(currentUser);
       setLoading(false);
+
+      const loggedUser = { email: currentUser.email };
     });
     return () => {
       unSubscribe();
