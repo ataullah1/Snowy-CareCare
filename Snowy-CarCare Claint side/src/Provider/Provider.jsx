@@ -72,19 +72,27 @@ const Provider = ({ children }) => {
 
       if (currentUser) {
         axios
-          .post('http://localhost:3000/jwt', loggedUser, {
-            withCredentials: true,
-          })
-          .then((res) => {
-            console.log('Token Response', res.data);
+          .post(
+            'https://snowy-car-care-server-side.vercel.app/jwt',
+            loggedUser,
+            {
+              withCredentials: true,
+            }
+          )
+          .then(() => {
+            // console.log('Token Response', res.data);
           });
       } else {
         axios
-          .post('http://localhost:3000/logout', loggedUser, {
-            withCredentials: true,
-          })
-          .then((res) => {
-            console.log(res.data);
+          .post(
+            'https://snowy-car-care-server-side.vercel.app/logout',
+            loggedUser,
+            {
+              withCredentials: true,
+            }
+          )
+          .then(() => {
+            // console.log(res.data);
           });
       }
     });

@@ -11,7 +11,7 @@ const ManageOrder = () => {
   const { userDta } = useContext(ContextAuth);
   const [data, setData] = useState([]);
 
-  const url = `http://localhost:3000/my-order?email=${userDta?.email}`;
+  const url = `https://snowy-car-care-server-side.vercel.app/my-order?email=${userDta?.email}`;
   useEffect(() => {
     axios
       .get(url, { withCredentials: true })

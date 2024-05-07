@@ -21,7 +21,8 @@ const Route = createBrowserRouter([
       {
         path: '/',
         element: <Home />,
-        loader: () => fetch('http://localhost:3000/car-services'),
+        loader: () =>
+          fetch('https://snowy-car-care-server-side.vercel.app/car-services'),
       },
       {
         path: '/service-details/:id',
@@ -31,7 +32,9 @@ const Route = createBrowserRouter([
           </PrivetRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:3000/car-services/${params.id}`),
+          fetch(
+            `https://snowy-car-care-server-side.vercel.app/car-services/${params.id}`
+          ),
       },
       {
         path: '/checkout/:id',
@@ -41,14 +44,17 @@ const Route = createBrowserRouter([
           </PrivetRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:3000/car-services/${params.id}`),
+          fetch(
+            `https://snowy-car-care-server-side.vercel.app/car-services/${params.id}`
+          ),
       },
       { path: '/login', element: <Login /> },
       { path: '/signup', element: <SignUp /> },
       {
         path: '/services',
         element: <ServicesPage />,
-        loader: () => fetch('http://localhost:3000/car-services'),
+        loader: () =>
+          fetch('https://snowy-car-care-server-side.vercel.app/car-services'),
       },
       { path: '/manage-order', element: <ManageOrder /> },
       {

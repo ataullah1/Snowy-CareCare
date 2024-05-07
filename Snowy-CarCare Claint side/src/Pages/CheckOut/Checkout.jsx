@@ -42,7 +42,7 @@ const Checkout = () => {
     // console.log(orderDta);
 
     axios
-      .post('http://localhost:3000/order', {
+      .post('https://snowy-car-care-server-side.vercel.app/order', {
         name,
         email,
         number,

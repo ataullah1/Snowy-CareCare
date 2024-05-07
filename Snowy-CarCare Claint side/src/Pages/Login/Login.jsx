@@ -49,9 +49,11 @@ const Login = () => {
         console.log(userData);
         const user = { email };
         axios
-          .post('http://localhost:3000/jwt', user, { withCredentials: true })
+          .post('https://snowy-car-care-server-side.vercel.app/jwt', user, {
+            withCredentials: true,
+          })
           .then((res) => {
-            console.log(res.data);
+            // console.log(res.data);
             if (res.data.success) {
               naviget(location.state ? location.state : '/');
             }

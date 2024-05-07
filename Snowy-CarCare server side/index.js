@@ -10,7 +10,11 @@ const port = process.env.PORT || 3000;
 // Middlewares============
 app.use(
   cors({
-    origin: ['http://localhost:5173'],
+    origin: [
+      'http://localhost:5173',
+      'https://snowy-carecare.firebaseapp.com',
+      'https://snowy-carecare.web.app',
+    ],
     credentials: true,
   })
 );
@@ -48,6 +52,12 @@ const client = new MongoClient(uri, {
   },
 });
 
+const cookeOption = {
+  httpOnly: true,
+  secure: process.env.NODE_ENV === 'production' ? true : false,
+  sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'strict',
+};
+
 async function run() {
   try {
     // await client.connect();
@@ -65,18 +75,14 @@ async function run() {
       const token = jwt.sign(user, process.env.TOKEN_SECRET, {
         expiresIn: '1h',
       });
-      res
-        .cookie('token', token, {
-          httpOnly: true,
-          secure: true,
-          sameSite: 'none',
-        })
-        .send({ success: true });
+      res.cookie('token', token, cookeOption).send({ success: true });
     });
     app.post('/logout', logger, async (req, res) => {
       const user = req.body;
       console.log('Logging Out user: ', user);
-      res.clearCookie('token', { maxAge: 0 }).send({ success: true });
+      res
+        .clearCookie('token', { ...cookeOption, maxAge: 0 })
+        .send({ success: true });
     });
 
     // Load all services related data read
