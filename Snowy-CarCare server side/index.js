@@ -21,6 +21,7 @@ const logger = async (req, res, next) => {
   console.log('Colled', req.host, req.originalUrl);
   next();
 };
+
 const verifyToken = async (req, res, next) => {
   const token = req.cookies?.token;
   console.log('value in token varify', token);
@@ -59,21 +60,27 @@ async function run() {
       .collection('order');
 
     // Auth Related api
-    app.post('/jwt', logger, async (req, res) => {
+    app.post('/jwt', async (req, res) => {
       const user = req.body;
-      console.log(user);
+      console.log('user for token', user);
       const token = jwt.sign(user, process.env.TOKEN_SECRET, {
         expiresIn: '1h',
       });
       res
         .cookie('token', token, {
           httpOnly: true,
-          secure: false,
+          secure: true,
+          sameSite: 'none',
         })
         .send({ success: true });
     });
+    app.post('/logout', async (req, res) => {
+      const user = req.body;
+      console.log('Logging Out user: ', user);
+      res.clearCookie('token', { maxAge: 0 }).send({ success: true });
+    });
 
-    // Load all data  read
+    // Load all services related data read
     app.get('/car-services', logger, async (req, res) => {
       const result = await carCareCollection.find().toArray();
       res.send(result);
@@ -98,9 +105,9 @@ async function run() {
 
     // Load SIngle data read for Checkout
     app.get('/my-order', logger, verifyToken, async (req, res) => {
-      if (req.query.email !== req.user.email) {
-        return res.status(401).send({ message: 'Unauthorized' });
-      }
+      // if (req.query.email !== req.userDta.email) {
+      //   return res.status(401).send({ message: 'Unauthorized' });
+      // }
 
       let query = {};
       if (req.query?.email) {
