@@ -14,6 +14,7 @@ import {
 import PropTypes from 'prop-types';
 import { createContext, useEffect, useState } from 'react';
 import auth from '../firebase/firebase.config';
+import axios from 'axios';
 
 export const ContextAuth = createContext();
 const Provider = ({ children }) => {
@@ -63,10 +64,29 @@ const Provider = ({ children }) => {
 
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
+      const userEmail = currentUser?.email || userDta?.email;
+      const loggedUser = { email: userEmail };
+
       setUserDta(currentUser);
       setLoading(false);
 
-      const loggedUser = { email: currentUser.email };
+      if (currentUser) {
+        axios
+          .post('http://localhost:3000/jwt', loggedUser, {
+            withCredentials: true,
+          })
+          .then((res) => {
+            console.log('Token Response', res.data);
+          });
+      } else {
+        axios
+          .post('http://localhost:3000/logout', loggedUser, {
+            withCredentials: true,
+          })
+          .then((res) => {
+            console.log(res.data);
+          });
+      }
     });
     return () => {
       unSubscribe();

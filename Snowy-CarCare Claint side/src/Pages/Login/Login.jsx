@@ -53,7 +53,7 @@ const Login = () => {
           .then((res) => {
             console.log(res.data);
             if (res.data.success) {
-              naviget(location?.state ? location.state : '/');
+              naviget(location.state ? location.state : '/');
             }
           });
 
