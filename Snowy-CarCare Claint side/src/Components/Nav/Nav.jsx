@@ -3,11 +3,11 @@ import logo from '../../assets/logo.svg';
 import { IoIosArrowForward } from 'react-icons/io';
 import { IoClose } from 'react-icons/io5';
 import { MdMenu } from 'react-icons/md';
-import { useContext, useState } from 'react';
-import { ContextAuth } from '../../Provider/Provider';
+import { useState } from 'react';
+import useAuth from '../../CustomHooks/useAuth';
 
 const Nav = () => {
-  const { userDta, logOutAcc } = useContext(ContextAuth);
+  const { userDta, logOutAcc } = useAuth();
   const [view, setView] = useState(false);
   // console.log(userDta);
   return (

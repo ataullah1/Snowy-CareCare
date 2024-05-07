@@ -1,20 +1,23 @@
 import { CgClose } from 'react-icons/cg';
 import BannerComp from '../../Components/BannerComp/BannerComp';
 import bannImg from '../../assets/images/banner/5.jpg';
-import { useContext, useEffect, useState } from 'react';
-import { ContextAuth } from '../../Provider/Provider';
-import axios from 'axios';
+import { useEffect, useState } from 'react';
 import Swal from 'sweetalert2';
 import { TiDelete } from 'react-icons/ti';
+import useAuth from '../../CustomHooks/useAuth';
+import useAxiosSecure from '../../CustomHooks/useAxiosSecure';
 
 const MyOrder = () => {
-  const { userDta } = useContext(ContextAuth);
+  const { userDta } = useAuth();
   const [data, setData] = useState([]);
+  const axiosSecure = useAxiosSecure();
 
-  const url = `http://localhost:3000/my-order?email=${userDta?.email}`;
+  const url = `/my-order?email=${userDta?.email}`;
   useEffect(() => {
-    axios
-      .get(url, { withCredentials: true })
+    // axios
+    //   .get(url, { withCredentials: true })
+    axiosSecure
+      .get(url)
       .then((response) => {
         // Code for handling the response
         setData(response.data);
@@ -27,7 +30,7 @@ const MyOrder = () => {
           icon: 'error',
         });
       });
-  }, [url]);
+  }, [url, axiosSecure]);
 
   const [imgFullScreen, setImgFullScreen] = useState();
   const imageFullScreen = (img) => {

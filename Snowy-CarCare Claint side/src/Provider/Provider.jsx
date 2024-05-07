@@ -91,7 +91,7 @@ const Provider = ({ children }) => {
     return () => {
       unSubscribe();
     };
-  }, []);
+  }, [userDta?.email]);
 
   const profileUpdate = (nam, photoUrl) => {
     return updateProfile(auth.currentUser, {
